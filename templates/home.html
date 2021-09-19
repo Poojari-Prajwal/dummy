@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h1>Hiii</h1>
+        {% for post in posts %}
+        <h1>{{ post.title}}</h1>
+        <p>
+            {{ post.author}} <br>
+            {{ post.content}} <br>
+            {{ post.date}} <br>
+            
+            {% if post.titles %}
+            <h3>this is sent through {{post.titles}}</h3>
+            {% else %}
+            <h3> this is sent through html</h3>
+            {% endif %}
+        </p>
+        {% endfor %}
+        <form action='add' method='post'>
+            
+            {% csrf_token %}
+
+            Enter 1st no <input name="num1"><br>
+            Enter 2nd no <input name="num2"><br>
+            <input type="submit">
+        </form>
+
+{% endblock %}
